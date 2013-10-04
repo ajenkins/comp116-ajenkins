@@ -49,7 +49,8 @@ def is_creditcard?(pkt)
 end
 
 def has_script_tags?(pkt)
-    /<script>.*<\/script>/.match(pkt.payload)
+    script_binary = "<script>".each_byte.map { |b| sprintf(" 0x%02X ",b) }.join
+    /<script>.*<\/script>/.match(pkt.payload) || /#{script_binary}/.match(pkt.payload)
 end
 
 def print_alert(pkt, attack, incident_number)
@@ -68,10 +69,9 @@ cap.stream.each do |p|
             print_alert(pkt, 'Xmas Tree Scan', incident_number += 1)
         elsif is_null_packet?(pkt)
             print_alert(pkt, 'Null Scan', incident_number += 1)
-        elsif is_nmap_scan?(pkt)
-            print_alert(pkt, 'Nmap Scan', incident_number += 1)
         end
     end
+    print_alert(pkt, 'Nmap Scan', incident_number += 1) if is_nmap_scan?(pkt)
     print_alert(pkt, 'Password Leak', incident_number += 1) if is_password?(pkt)
     print_alert(pkt, 'Credit Card Leak', incident_number += 1) if is_creditcard?(pkt)
     print_alert(pkt, 'Possible XSS', incident_number += 1) if has_script_tags?(pkt)
