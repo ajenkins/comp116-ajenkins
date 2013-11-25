@@ -1,6 +1,8 @@
 #COMP116 Assignment 5: Forensics
 ##Will Clarkson and A.J. Jenkins
 
+Note from AJ: I wanted you to know that Will did the majority of the work on the
+assignment.
 
 ###Hidden Data in Images
 1. Examine the following series of images to determine any differences and reveal 
