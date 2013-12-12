@@ -1,6 +1,9 @@
 # This script takes an encrypted Snapchat image and decrypts it into its
 # original JPEG format.
 
+# This script borrows a lot from code written by Amelia Cuss. See the readme for
+# more info.
+
 require 'openssl'
 
 if ARGV.length == 2
