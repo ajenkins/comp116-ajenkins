@@ -2,6 +2,10 @@
 ##Created by AJ Jenkins
 ##On 12/12/13
 
+###Video Walkthrough
+For a video walkthrough that shows you how to permanently save Snapchat
+photos, [click here](http://www.youtube.com/watch?v=CuW-Rz65zLs)
+
 ###Using the script
 To use the script, run:
     ruby decrypt_snap.rb input_file output_file.jpg
